@@ -1,0 +1,36 @@
+import random
+
+# Define a list of tuples containing questions and their respective answers
+questions = [
+    ("Who directed the movie 'Inception'?", "Christopher Nolan"),
+    ("Which actor played the lead role in the movie 'Forrest Gump'?", "Tom Hanks"),
+    ("What year was the movie 'The Shawshank Redemption' released?", "1994"),
+    ("Who won the Academy Award for Best Actress in 2019 for her role in 'The Favourite'?", "Olivia Colman"),
+    ("What is the highest-grossing film of all time (as of 2022)?", "Avatar")
+]
+
+# Function to run the quiz
+def run_quiz():
+    score = 0
+    random.shuffle(questions)  # Shuffle the questions
+    for question, answer in questions:
+        user_answer = input(question + "\nYour answer: ").strip().capitalize()
+        if user_answer == answer:
+            print("Correct!")
+            score += 1
+        else:
+            print("Incorrect. The correct answer is:", answer)
+    print("Quiz ended! You scored {}/{}.".format(score, len(questions)))
+
+# Main function
+def main():
+    print("Welcome to the Movie Trivia Quiz!")
+    while True:
+        run_quiz()
+        play_again = input("Do you want to play again? (yes/no): ").strip().lower()
+        if play_again != "yes":
+            print("Thank you for playing! Goodbye!")
+            break
+
+if __name__ == "__main__":
+    main()
